@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}index des clients{% endblock %}
+
+{% block body %}
+    <h1>Liste des clients</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.nom }}</td>
+                <td>{{ client.prenom }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.telephone }}</td>
+                <td>
+                    <a href="{{ path('app_client_show', {'id': client.id}) }}">Détails client_{{client.id}}</a>
+                   
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">pas de client ajouté</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+  
+
+{% endblock %}

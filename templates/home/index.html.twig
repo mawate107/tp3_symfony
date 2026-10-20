@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper {display: flex; margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif;justify-content : space-between; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<h1>Bienvenue dans l'application</h1>
+<div class="example-wrapper">
+    
+    <a href="{{ path('app_client_index') }}">Gérer les clients
+    </a>
+
+    <a href="{{ path('app_produit_index') }}">Gérer les produits
+    </a>
+</div>
+{% endblock %}
