@@ -29,10 +29,16 @@
                    
                 </td>
                 <td> <a href="{{ path('app_client_edit', {'id': client.id}) }}">Modifier</a></td>
-                <td><form method="post" action="{{ path('app_client_delete', {'id': client.id}) }}">
-                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ client.id) }}">
+                <td>
+                <form method="post"
+                    action="{{ path('app_client_delete', {'id': client.id}) }}"
+                    onsubmit="return confirm('Voulez-vous vraiment supprimer ce client ?');">
+                    <input type="hidden"
+                        name="_token"
+                        value="{{ csrf_token('delete' ~ client.id) }}">
                     <button type="submit">Supprimer</button>
-                </form></td>
+                </form>
+                </td>
             </tr>
         {% else %}
             <tr>
