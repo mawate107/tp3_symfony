@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -42,6 +43,8 @@ class Client
     {
         return $this->id;
     }
+    
+    #[Assert\NotBlank(message: 'Le nom est obligatoire')]
 
     public function getNom(): ?string
     {
@@ -54,7 +57,7 @@ class Client
 
         return $this;
     }
-
+    #[Assert\NotBlank(message: "Le prénom est obligatoire")]
     public function getPrenom(): ?string
     {
         return $this->prenom;
@@ -67,6 +70,8 @@ class Client
         return $this;
     }
 
+    #[Assert\NotBlank(message: "L'email est obligatoire")]
+    #[Assert\Email(message: "L'email n'est pas valide")]
     public function getEmail(): ?string
     {
         return $this->email;
@@ -78,7 +83,7 @@ class Client
 
         return $this;
     }
-
+    #[Assert\NotBlank(message : "Communiquez votre numéro de téléphone")]
     public function getTelephone(): ?string
     {
         return $this->telephone;
